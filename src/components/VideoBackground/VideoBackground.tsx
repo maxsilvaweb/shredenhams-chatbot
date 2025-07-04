@@ -9,6 +9,22 @@ export const VideoBackground: FC<VideoBackgroundProps> = ({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      const userAgent = navigator.userAgent.toLowerCase();
+      const mobileKeywords = ['mobile', 'android', 'iphone', 'ipad', 'ipod', 'blackberry', 'windows phone'];
+      const isMobileDevice = mobileKeywords.some(keyword => userAgent.includes(keyword)) || window.innerWidth <= 768;
+      setIsMobile(isMobileDevice);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const handleVideoLoad = () => {
     setIsLoaded(true);
@@ -21,7 +37,14 @@ export const VideoBackground: FC<VideoBackgroundProps> = ({
   };
 
   useEffect(() => {
-    // Preload the video
+    // On mobile, skip video loading and use static image
+    if (isMobile) {
+      setIsLoaded(true);
+      onVideoLoaded();
+      return;
+    }
+
+    // Preload the video for desktop
     const video = document.createElement('video');
     video.src = '/bg.mp4';
     video.addEventListener('loadeddata', handleVideoLoad);
@@ -32,10 +55,10 @@ export const VideoBackground: FC<VideoBackgroundProps> = ({
       video.removeEventListener('loadeddata', handleVideoLoad);
       video.removeEventListener('error', handleVideoError);
     };
-  }, []);
+  }, [isMobile]);
 
-  if (hasError) {
-    // Fallback to the static image if video fails to load
+  // Show static image on mobile or if video fails to load
+  if (isMobile || hasError) {
     return (
       <div
         className="absolute inset-0 w-full h-full -z-10"
@@ -44,11 +67,13 @@ export const VideoBackground: FC<VideoBackgroundProps> = ({
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          opacity: isLoaded ? 1 : 0,
         }}
       />
     );
   }
 
+  // Show video on desktop
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden -z-10">
       <video

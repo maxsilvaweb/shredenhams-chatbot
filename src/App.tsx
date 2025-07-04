@@ -106,7 +106,7 @@ function App() {
       <VideoPreloader isVisible={!isVideoLoaded} />
 
       {/* Main App */}
-      <div className="fixed inset-0 w-screen h-screen flex items-center justify-center p-4">
+      <div className="min-h-screen w-screen flex items-center justify-center p-4 md:fixed md:inset-0 md:h-screen">
         {/* Video Background */}
         <VideoBackground onVideoLoaded={handleVideoLoaded} />
 
@@ -114,7 +114,7 @@ function App() {
         <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px] z-0"></div>
 
         <div
-          className={`relative z-10 w-full max-w-4xl h-full max-h-[90vh] flex flex-col transition-opacity duration-1000 ${
+          className={`relative z-10 w-full max-w-4xl min-h-screen md:h-full md:max-h-[90vh] flex flex-col transition-opacity duration-1000 ${
             isVideoLoaded ? 'opacity-100' : 'opacity-0'
           }`}
         >
@@ -134,7 +134,7 @@ function App() {
           </div>
 
           {/* Main Chat Interface */}
-          <div className="flex-1 min-h-0 bg-transparent">
+          <div className="flex-1 min-h-[60vh] md:min-h-0 bg-transparent">
             <Card className="bg-white/95 backdrop-blur-md shadow-2xl border-0 flex flex-col">
               {/* Chat Messages */}
               <div className="flex-1 min-h-0">

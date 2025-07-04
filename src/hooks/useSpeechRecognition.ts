@@ -1,6 +1,5 @@
-/// <reference path="../types/speech-recognition.d.ts" />
-
 import { useState, useEffect, useRef } from 'react';
+import '../types/speech-recognition';
 
 interface UseSpeechRecognitionReturn {
   isListening: boolean;

@@ -44,6 +44,8 @@ declare global {
   }
 
   class SpeechRecognition extends EventTarget {
+    constructor();
+    
     continuous: boolean;
     grammars: SpeechGrammarList;
     interimResults: boolean;
