@@ -1,0 +1,1 @@
+export { VideoBackground as default, VideoBackground } from './VideoBackground';
