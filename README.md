@@ -15,22 +15,26 @@ A modern, interactive chatbot application for a skate shop that provides custome
 ## Technologies Used
 
 ### Frontend Framework
+
 - **React 18** - Modern React with hooks and functional components
 - **TypeScript** - Type-safe development
 - **Vite** - Fast build tool and development server
 
 ### UI & Styling
+
 - **Tailwind CSS** - Utility-first CSS framework
 - **Radix UI** - Accessible, unstyled UI components
 - **Lucide React** - Beautiful icon library
 - **CSS Animations** - Smooth transitions and loading states
 
 ### Key Libraries
+
 - **class-variance-authority** - Component variant management
 - **clsx** - Conditional className utility
 - **tailwind-merge** - Tailwind class merging utility
 
 ### Development Tools
+
 - **ESLint** - Code linting and formatting
 - **PostCSS** - CSS processing
 - **Autoprefixer** - CSS vendor prefixing
@@ -78,23 +82,27 @@ src/
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (version 16 or higher)
 - npm or yarn package manager
 
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone <repository-url>
 cd shredenhams-chatbot
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -126,6 +134,7 @@ To add new chatbot responses, edit `src/data/responses.ts`:
 ### Styling
 
 The project uses Tailwind CSS for styling. Customize the design by:
+
 - Modifying `tailwind.config.js` for theme customization
 - Editing component styles in individual component files
 - Updating global styles in `src/index.css`
@@ -142,14 +151,6 @@ Replace the video file in `public/bg.mp4` with your own background video. Ensure
 - Mobile browsers
 
 **Note**: Voice recognition features work best in Chrome and Edge browsers.
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Run tests and linting
-5. Submit a pull request
 
 ## License
 
