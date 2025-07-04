@@ -116,33 +116,6 @@ npm run dev
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 
-## Customization
-
-### Adding New Responses
-
-To add new chatbot responses, edit `src/data/responses.ts`:
-
-```typescript
-{
-  id: 'unique-id',
-  keywords: ['keyword1', 'keyword2'],
-  response: 'Your response text here',
-  category: 'category-name'
-}
-```
-
-### Styling
-
-The project uses Tailwind CSS for styling. Customize the design by:
-
-- Modifying `tailwind.config.js` for theme customization
-- Editing component styles in individual component files
-- Updating global styles in `src/index.css`
-
-### Video Background
-
-Replace the video file in `public/bg.mp4` with your own background video. Ensure the video is optimized for web playback.
-
 ## Browser Compatibility
 
 - Chrome/Edge (recommended for voice features)
