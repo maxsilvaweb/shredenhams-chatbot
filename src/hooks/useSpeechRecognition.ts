@@ -1,10 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 
-interface SpeechRecognitionResult {
-  transcript: string;
-  confidence: number;
-}
-
 interface UseSpeechRecognitionReturn {
   isListening: boolean;
   transcript: string;
@@ -20,13 +15,15 @@ export const useSpeechRecognition = (): UseSpeechRecognitionReturn => {
   const [error, setError] = useState<string | null>(null);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
 
-  const hasRecognitionSupport = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+  const hasRecognitionSupport =
+    'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
 
   useEffect(() => {
     if (!hasRecognitionSupport) return;
 
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
+    const SpeechRecognitionClass =
+      window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognitionClass();
 
     recognition.continuous = false;
     recognition.interimResults = false;
@@ -80,14 +77,6 @@ export const useSpeechRecognition = (): UseSpeechRecognitionReturn => {
     startListening,
     stopListening,
     hasRecognitionSupport,
-    error
+    error,
   };
 };
-
-// Type declarations for speech recognition
-declare global {
-  interface Window {
-    SpeechRecognition: typeof SpeechRecognition;
-    webkitSpeechRecognition: typeof SpeechRecognition;
-  }
-}
